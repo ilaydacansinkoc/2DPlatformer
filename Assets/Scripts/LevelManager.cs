@@ -12,11 +12,13 @@ public class LevelManager : MonoBehaviour {
 	public GameObject deathParticle;
 	public GameObject respawnParticle;
 
+	public CameraController controller;
 	public float respawnTime;
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();		
+		controller = FindObjectOfType<CameraController> ();
 	}
 	
 	// Update is called once per frame
@@ -35,8 +37,10 @@ public class LevelManager : MonoBehaviour {
 
 		player.enabled = false;
 		player.GetComponent<Renderer> ().enabled = false;
-		player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-		player.GetComponent<Rigidbody2D> ().gravityScale = 0f;
+		controller.isKilled = true;
+
+		//player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		//player.GetComponent<Rigidbody2D> ().gravityScale = 0f;
 
 		ScoreManager.AddPoints (-pointsForPenalty);
 		yield return new WaitForSeconds (respawnTime);
@@ -44,7 +48,9 @@ public class LevelManager : MonoBehaviour {
 		player.transform.position = currentCheckPoint.transform.position;
 		player.enabled = true;
 		player.GetComponent<Renderer> ().enabled = true;
-		player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
+		controller.isKilled = false;
+
+		//player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
 		Instantiate (respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
 	}
 }
