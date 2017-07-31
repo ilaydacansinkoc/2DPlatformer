@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject currentCheckPoint;
 	private PlayerController player;
 
+	public int pointsForPenalty;
+
 	public GameObject deathParticle;
 	public GameObject respawnParticle;
 
@@ -30,8 +32,19 @@ public class LevelManager : MonoBehaviour {
 	public IEnumerator RespawnPlayerCo(){
 		Instantiate (deathParticle,player.transform.position,player.transform.rotation);
 		Debug.Log ("Player Respawn");
+
+		player.enabled = false;
+		player.GetComponent<Renderer> ().enabled = false;
+		player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		player.GetComponent<Rigidbody2D> ().gravityScale = 0f;
+
+		ScoreManager.AddPoints (-pointsForPenalty);
 		yield return new WaitForSeconds (respawnTime);
+
 		player.transform.position = currentCheckPoint.transform.position;
+		player.enabled = true;
+		player.GetComponent<Renderer> ().enabled = true;
+		player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
 		Instantiate (respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
 	}
 }
