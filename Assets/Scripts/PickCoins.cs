@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickCoins : MonoBehaviour {
 
 	public int gainPoints;
+	public AudioSource pickEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class PickCoins : MonoBehaviour {
 			return;
 		ScoreManager.AddPoints (gainPoints);
 
+		pickEffect.Play ();
 		Destroy (gameObject);
 	}
 }

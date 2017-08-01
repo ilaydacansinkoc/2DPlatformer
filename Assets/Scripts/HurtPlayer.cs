@@ -5,6 +5,7 @@ using UnityEngine;
 public class HurtPlayer : MonoBehaviour {
 
 	public int damageToGive;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,9 @@ public class HurtPlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.gameObject.tag == "Player")
+		if (col.gameObject.tag == "Player") {
 			HealthManager.HurtPlayer (damageToGive);
+			col.GetComponent<AudioSource> ().Play();
+		}
 	}
 }
