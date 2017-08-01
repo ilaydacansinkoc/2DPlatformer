@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour {
 	public float shotDelay;
 	public float shotDelayCounter;
 
+	public float knockback;
+	public float knockbackLenght ;
+	public float knockbackCount;
+	public bool knockbackFromRight;
+
 
 	// Use this for initialization
 	void Start () {
@@ -67,8 +72,18 @@ public class PlayerController : MonoBehaviour {
 			moveVelociy = -movSpeed;
 		}
 
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelociy, GetComponent<Rigidbody2D> ().velocity.y);
+		if (knockbackCount <= 0)
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelociy, GetComponent<Rigidbody2D> ().velocity.y);
+		else {
+			if (knockbackFromRight) {
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-knockback,knockback);
+			}
+			if (!knockbackFromRight) {
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (knockback,knockback);
+			}
+			knockbackCount -= Time.deltaTime;
 
+		}
 
 		anim.SetFloat ("Speed",Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 

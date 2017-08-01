@@ -51,8 +51,10 @@ public class LevelManager : MonoBehaviour {
 		player.enabled = true;
 		player.GetComponent<Renderer> ().enabled = true;
 		controller.isKilled = false;
+
 		healthManager.FullHealth ();
 		healthManager.isDead = false;
+
 
 		//player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
 		Instantiate (respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);

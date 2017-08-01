@@ -20,6 +20,17 @@ public class HurtPlayer : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			HealthManager.HurtPlayer (damageToGive);
 			col.GetComponent<AudioSource> ().Play();
+
+			var player = col.GetComponent<PlayerController> ();
+			player.knockbackCount = player.knockbackLenght;
+
+			if (col.transform.position.x < transform.position.x)
+				player.knockbackFromRight = true;
+			else {
+				player.knockbackFromRight = false;
+			}
 		}
+
+
 	}
 }

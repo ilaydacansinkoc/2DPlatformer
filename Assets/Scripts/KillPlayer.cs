@@ -5,10 +5,12 @@ using UnityEngine;
 public class KillPlayer : MonoBehaviour {
 
 	public LevelManager levelManager;
+	//private PlayerController player;
 
 	// Use this for initialization
 	void Start () {
 		levelManager = FindObjectOfType<LevelManager> ();
+		//player = FindObjectOfType<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,7 @@ public class KillPlayer : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.name == "Player") {
 			levelManager.RespawnPlayer ();
+
 		}
 	}
 }
