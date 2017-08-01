@@ -15,10 +15,12 @@ public class LevelManager : MonoBehaviour {
 	public CameraController controller;
 	public float respawnTime;
 
+	public HealthManager healthManager;
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();		
 		controller = FindObjectOfType<CameraController> ();
+		healthManager = FindObjectOfType<HealthManager> ();
 	}
 	
 	// Update is called once per frame
@@ -49,6 +51,8 @@ public class LevelManager : MonoBehaviour {
 		player.enabled = true;
 		player.GetComponent<Renderer> ().enabled = true;
 		controller.isKilled = false;
+		healthManager.FullHealth ();
+		healthManager.isDead = false;
 
 		//player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
 		Instantiate (respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);

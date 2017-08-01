@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour {
 	public Transform ninjaSpawn;
 	public GameObject ninjaStar;
 
+	public float shotDelay;
+	public float shotDelayCounter;
+
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -75,8 +79,20 @@ public class PlayerController : MonoBehaviour {
 			transform.localScale = new Vector3 (-1f, 1f, 1f);
 		}
 
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+		if (Input.GetKeyDown (KeyCode.R)) {
 			Instantiate (ninjaStar, ninjaSpawn.position,ninjaSpawn.rotation);
+			shotDelayCounter = shotDelay;
+		}
+
+		if (Input.GetKey (KeyCode.R)) {
+			shotDelayCounter -= Time.deltaTime;
+
+			if (shotDelayCounter <= 0) {
+				shotDelayCounter = shotDelay;
+				Instantiate (ninjaStar, ninjaSpawn.position,ninjaSpawn.rotation);
+
+			}
+
 		}
 	}
 
