@@ -5,10 +5,11 @@ using UnityEngine;
 public class HurtPlayer : MonoBehaviour {
 
 	public int damageToGive;
+	private HealthManager hm;
 
 	// Use this for initialization
 	void Start () {
-		
+		hm = FindObjectOfType<HealthManager> ();
 	}
 	
 	// Update is called once per frame
@@ -17,8 +18,10 @@ public class HurtPlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" && !hm.isDead) {
 			HealthManager.HurtPlayer (damageToGive);
+
+
 			col.GetComponent<AudioSource> ().Play();
 
 			var player = col.GetComponent<PlayerController> ();
@@ -28,6 +31,10 @@ public class HurtPlayer : MonoBehaviour {
 				player.knockbackFromRight = true;
 			else {
 				player.knockbackFromRight = false;
+			}
+
+			if (hm.isDead) {
+				return;
 			}
 		}
 
