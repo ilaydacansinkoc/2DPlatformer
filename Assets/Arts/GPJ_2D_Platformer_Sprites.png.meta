@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e392317209063d24e8f4ac2b95377e59
-timeCreated: 1501524819
+timeCreated: 1501708466
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,7 +15,7 @@ TextureImporter:
     21300016: GPJ_2D_Platformer_Sprites_8
     21300018: GPJ_2D_Platformer_Sprites_9
     21300020: GPJ_2D_Platformer_Sprites_10
-    21300022: GPJ_2D_Platformer_Sprites_11
+    21300022: LevelExit
     21300024: GPJ_2D_Platformer_Sprites_12
     21300026: GPJ_2D_Platformer_Sprites_13
     21300028: GPJ_2D_Platformer_Sprites_14
@@ -244,32 +244,6 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_16
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 70
-        width: 17
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_17
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 48
-        width: 19
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: GPJ_2D_Platformer_Sprites_18
       rect:
         serializedVersion: 2
@@ -433,6 +407,19 @@ TextureImporter:
         y: 84
         width: 7
         height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LevelExit
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 48
+        width: 19
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

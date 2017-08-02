@@ -28,10 +28,14 @@ public class PlayerController : MonoBehaviour {
 	public float knockbackCount;
 	public bool knockbackFromRight;
 
+	private AudioSource jumpEffect;
+
+
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
+		jumpEffect = GetComponentInChildren<AudioSource> ();
 	}
 
 	void FixedUpdate(){
@@ -50,6 +54,7 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space) && grounded){
 			//GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,jumpHeight);
 			Jump();
+			jumpEffect.Play ();
 
 		}
 
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour {
 			//GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,jumpHeight);
 			Jump();
 			doubleJumped = true;
+			jumpEffect.Play ();
 
 		}
 
@@ -108,6 +114,14 @@ public class PlayerController : MonoBehaviour {
 
 			}
 
+		}
+
+		if (anim.GetBool ("Sword")) {
+			anim.SetBool ("Sword", false);
+		}
+
+		if (Input.GetKey (KeyCode.F)) {
+			anim.SetBool ("Sword", true);
 		}
 	}
 
