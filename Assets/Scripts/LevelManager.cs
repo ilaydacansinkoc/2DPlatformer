@@ -47,15 +47,16 @@ public class LevelManager : MonoBehaviour {
 		ScoreManager.AddPoints (-pointsForPenalty);
 		yield return new WaitForSeconds (respawnTime);
 
+
 		player.transform.position = currentCheckPoint.transform.position;
 		player.enabled = true;
+		player.knockbackLenght = 0;
 		player.GetComponent<Renderer> ().enabled = true;
 		controller.isKilled = false;
-		player.knockbackLenght = 0;
-
 		healthManager.FullHealth ();
 		healthManager.isDead = false;
 		//player.GetComponent<Rigidbody2D> ().gravityScale = 5f;
 		Instantiate (respawnParticle, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
+
 	}
 }

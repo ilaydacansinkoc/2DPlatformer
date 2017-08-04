@@ -13,9 +13,7 @@ public class PauseMenu : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			isResumed = !isResumed;
-		}
+
 
 		if (isResumed) {
 			
@@ -27,13 +25,18 @@ public class PauseMenu : MonoBehaviour {
 			Time.timeScale = 1f;
 		}
 
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			isResumed = !isResumed;
+		}
+
 
 	}
 
 
 	public void Resume(){
 
-		isResumed = true;
+		isResumed = false;
+		Debug.Log ("Resumed");
 		
 	}
 	public void selectLevel(){

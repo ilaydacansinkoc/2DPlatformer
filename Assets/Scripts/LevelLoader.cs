@@ -15,7 +15,7 @@ public class LevelLoader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (isInZone && Input.GetKeyDown(KeyCode.W))
+		if (isInZone && Input.GetAxisRaw("Vertical")>0)
 			SceneManager.LoadScene (levelName);
 		
 	}
@@ -28,6 +28,6 @@ public class LevelLoader : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "Player")
-			isInZone = true;
+			isInZone = false;
 	}
 }

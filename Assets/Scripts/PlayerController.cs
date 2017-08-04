@@ -51,14 +51,14 @@ public class PlayerController : MonoBehaviour {
 
 		anim.SetBool ("Grounded", grounded);
 
-		if(Input.GetKeyDown(KeyCode.Space) && grounded){
+		if(Input.GetButtonDown("Jump") && grounded){
 			//GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,jumpHeight);
 			Jump();
 			jumpEffect.Play ();
 
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space) && !grounded && !doubleJumped) {
+		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) {
 			//GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,jumpHeight);
 			Jump();
 			doubleJumped = true;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 
 		}
 
-		moveVelociy = 0f;
+		moveVelociy = Input.GetAxisRaw ("Horizontal")* movSpeed;
 
 		if(Input.GetKey(KeyCode.D)){
 			//GetComponent<Rigidbody2D> ().velocity = new Vector2 (movSpeed, GetComponent<Rigidbody2D> ().velocity.y);
@@ -100,12 +100,12 @@ public class PlayerController : MonoBehaviour {
 			transform.localScale = new Vector3 (-1f, 1f, 1f);
 		}
 
-		if (Input.GetKeyDown (KeyCode.R)) {
+		if (Input.GetButtonDown ("Fire1")) {
 			Instantiate (ninjaStar, ninjaSpawn.position,ninjaSpawn.rotation);
 			shotDelayCounter = shotDelay;
 		}
 
-		if (Input.GetKey (KeyCode.R)) {
+		if (Input.GetButton ("Fire1")) {
 			shotDelayCounter -= Time.deltaTime;
 
 			if (shotDelayCounter <= 0) {
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetBool ("Sword", false);
 		}
 
-		if (Input.GetKey (KeyCode.F)) {
+		if (Input.GetButton("Fire2")) {
 			anim.SetBool ("Sword", true);
 		}
 	}
