@@ -11,8 +11,15 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject canvas;
 	public bool isResumed;
 
+	void Start(){
+		isResumed = false;
+	}
+
 	void Update(){
 
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			isResumed = !isResumed;
+		}
 
 
 		if (isResumed) {
@@ -25,9 +32,7 @@ public class PauseMenu : MonoBehaviour {
 			Time.timeScale = 1f;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			isResumed = !isResumed;
-		}
+
 
 
 	}

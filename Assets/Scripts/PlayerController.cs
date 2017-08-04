@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float movSpeed;
-	public float jumpHeight;
-	private float moveVelociy;
-
-
-	public float groundCheckRadius;
 	public Transform groundCheck;
 	public LayerMask whatisGround;
-	private bool grounded;
-
-	private bool doubleJumped;
-
 	private Animator anim;
 	public Transform ninjaSpawn;
 	public GameObject ninjaStar;
+	private AudioSource jumpEffect;
 
 	public float shotDelay;
 	public float shotDelayCounter;
-
 	public float knockback;
 	public float knockbackLenght ;
 	public float knockbackCount;
-	public bool knockbackFromRight;
+	public float movSpeed;
+	public float jumpHeight;
+	private float moveVelociy;
+	public float groundCheckRadius;
 
-	private AudioSource jumpEffect;
+	public float climbSpeed;
+	public float climbVelocity;
+	private float gravityStore;
+
+	public bool knockbackFromRight;
+	public bool onLadder;
+	private bool grounded;
+	private bool doubleJumped;
+
 
 
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator> ();
 		jumpEffect = GetComponentInChildren<AudioSource> ();
+		gravityStore = GetComponent<Rigidbody2D> ().gravityScale;
 	}
 
 	void FixedUpdate(){
@@ -116,16 +118,40 @@ public class PlayerController : MonoBehaviour {
 
 		}
 
-		if (anim.GetBool ("Sword")) {
+		if (anim.GetBool ("Sword")) 
 			anim.SetBool ("Sword", false);
+		
+		if (Input.GetButton("Fire2")) 
+			anim.SetBool ("Sword", true);
+		
+
+		if (onLadder) {
+			GetComponent<Rigidbody2D> ().gravityScale = 0f;
+			climbVelocity = climbSpeed * Input.GetAxisRaw ("Vertical");
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, climbVelocity);
+				
 		}
 
-		if (Input.GetButton("Fire2")) {
-			anim.SetBool ("Sword", true);
+		if (!onLadder) {
+			GetComponent<Rigidbody2D> ().gravityScale = gravityStore;
 		}
 	}
 
 	public void Jump(){
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0,jumpHeight);
+	}
+
+	void OnCollisionStay2D(Collision2D other){
+		if (other.transform.tag == "Platform") {
+			Debug.Log ("Collided");
+			transform.parent = other.transform;
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D other){
+		if (other.transform.tag == "Platform") {
+			Debug.Log ("Collided");
+			transform.parent = null;
+		}
 	}
 }

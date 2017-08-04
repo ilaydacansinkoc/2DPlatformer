@@ -16,7 +16,7 @@ public class HealthManager : MonoBehaviour {
 
 	//public int playerLives;
 	private LifeManager lifeManager;
-
+	private TimeManager timeManager;
 
 
 	// Use this for initialization
@@ -32,6 +32,7 @@ public class HealthManager : MonoBehaviour {
 		player = FindObjectOfType<PlayerController> ();
 
 		lifeManager = FindObjectOfType<LifeManager> ();
+		timeManager = FindObjectOfType<TimeManager> ();
 
 	}
 	
@@ -45,6 +46,8 @@ public class HealthManager : MonoBehaviour {
 			lifeManager.lostLife ();
 			levelManager.RespawnPlayer ();
 			isDead = true;
+			timeManager.ResetTime ();
+
 		}
 
 		if (isDead) {
@@ -63,6 +66,10 @@ public class HealthManager : MonoBehaviour {
 		PlayerPrefs.SetInt("playerCurrentHealth",playerHealth);
 
 
+	}
+
+	public void KillPlayer(){
+		playerHealth = 0;
 	}
 
 }
