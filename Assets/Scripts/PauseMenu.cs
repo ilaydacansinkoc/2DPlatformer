@@ -17,9 +17,7 @@ public class PauseMenu : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			isResumed = !isResumed;
-		}
+
 
 
 		if (isResumed) {
@@ -33,7 +31,9 @@ public class PauseMenu : MonoBehaviour {
 		}
 
 
-
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			isResumed = !isResumed;
+		}
 
 	}
 
