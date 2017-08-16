@@ -10,7 +10,9 @@ public class HealthManager : MonoBehaviour {
 	//public int maxPlayerHealth;
 	public bool isDead;
 	public static int playerHealth;
-	Text text;
+	public int maxPlayerHealth;
+	//Text text;
+	public Slider slider;
 	private LevelManager levelManager;
 	private PlayerController player;
 
@@ -21,7 +23,8 @@ public class HealthManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		text = GetComponent<Text> ();
+		//text = GetComponent<Text> ();
+		slider =GetComponent<Slider>();
 
 		//playerHealth = maxPlayerHealth;
 		playerHealth = PlayerPrefs.GetInt("playerCurrentHealth");
@@ -49,11 +52,14 @@ public class HealthManager : MonoBehaviour {
 			timeManager.ResetTime ();
 
 		}
+		if (playerHealth >= maxPlayerHealth)
+			playerHealth = maxPlayerHealth;
 
 		if (isDead) {
 			player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		}
-		text.text = "" + playerHealth;
+		//text.text = "" + playerHealth;
+		slider.value = playerHealth;
 	}
 
 	public static void HurtPlayer(int damage){

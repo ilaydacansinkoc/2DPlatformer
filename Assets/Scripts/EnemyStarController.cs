@@ -37,6 +37,6 @@ public class EnemyStarController : MonoBehaviour
 		}
 		
 		Instantiate (this.impactEffect, transform.position, transform.rotation);
-		Destroy (gameObject);
+		//Destroy (gameObject);
 	}
 }

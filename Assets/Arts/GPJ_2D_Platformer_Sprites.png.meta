@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e392317209063d24e8f4ac2b95377e59
-timeCreated: 1502892066
+timeCreated: 1502908512
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,16 +22,16 @@ TextureImporter:
     21300030: GPJ_2D_Platformer_Sprites_15
     21300032: GPJ_2D_Platformer_Sprites_16
     21300034: GPJ_2D_Platformer_Sprites_17
-    21300036: GPJ_2D_Platformer_Sprites_18
+    21300036: Life
     21300038: GPJ_2D_Platformer_Sprites_19
     21300040: GPJ_2D_Platformer_Sprites_20
     21300042: GPJ_2D_Platformer_Sprites_21
     21300044: GPJ_2D_Platformer_Sprites_22
     21300046: GPJ_2D_Platformer_Sprites_23
-    21300048: GPJ_2D_Platformer_Sprites_24
-    21300050: GPJ_2D_Platformer_Sprites_25
-    21300052: GPJ_2D_Platformer_Sprites_26
-    21300054: GPJ_2D_Platformer_Sprites_27
+    21300048: flying_1
+    21300050: flying_2
+    21300052: flying_3
+    21300054: flying_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -244,7 +244,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_18
+      name: Life
       rect:
         serializedVersion: 2
         x: 2
@@ -322,7 +322,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_24
+      name: flying_1
       rect:
         serializedVersion: 2
         x: 64
@@ -335,7 +335,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_25
+      name: flying_2
       rect:
         serializedVersion: 2
         x: 80
@@ -348,7 +348,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_26
+      name: flying_3
       rect:
         serializedVersion: 2
         x: 96
@@ -361,7 +361,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_27
+      name: flying_4
       rect:
         serializedVersion: 2
         x: 112

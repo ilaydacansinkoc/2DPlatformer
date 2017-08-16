@@ -20,7 +20,7 @@ public class HurtEnemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.name == "Enemy") {
+		if (col.tag == "Enemy") {
 			col.GetComponent<EnemyHealthManager> ().giveDamage (damageToGive);
 			rb2d.velocity = new Vector2 (rb2d.velocity.x, bouncePlayer);
 
